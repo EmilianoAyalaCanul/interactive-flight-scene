@@ -1,2 +1,5 @@
 # interactive-flight-scene
-An interactive stylized flight animation built with Three.js.
+
+
+
+This project is built using [Three.js], which is licensed under the MIT License.
