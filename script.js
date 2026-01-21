@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/Addons.js'
+import debug_gui from './js_modules/lil-gui'
 
 //canvas doom element
 const canvas = document.querySelector('canvas.webgl')
