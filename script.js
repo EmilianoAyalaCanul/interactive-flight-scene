@@ -52,17 +52,17 @@ scene
 const renderer = new THREE.WebGLRenderer({canvas:canvas})
 renderer.setSize(sizes.width,sizes.height)
 
-//update camera
-window.addEventListener('resize', (event) => {
-    //update sizes
-    sizes.width = innerWidth
-    sizes.height = innerHeight
+//responsive viewport
+window.addEventListener('resize', () => {
+    // Update sizes
+    sizes.width = window.innerWidth
+    sizes.height = window.innerHeight
 
-    //update camera
+    // Update camera
     camera.aspect = sizes.width / sizes.height
-    camera.updateMatrix()
+    camera.updateProjectionMatrix()
 
-    //update rendere
+    // Update renderer
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
