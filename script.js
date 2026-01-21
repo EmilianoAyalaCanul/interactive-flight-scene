@@ -15,18 +15,15 @@ const sizes = {
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 200)
 camera.position.z = 5
 
-//object delete
-const object = new THREE.Mesh(
-    new THREE.BoxGeometry(1,1,1),
-    new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: true})
-)
+//objects
+import avion from './objects/avion/avion'
 
 const axesHelper = new THREE.AxesHelper(2)
 
 //scene
 const scene = new THREE.Scene()
 scene
-    .add(camera,object,axesHelper)
+    .add(camera,axesHelper,avion)
 
 //renderer
 const renderer = new THREE.WebGLRenderer({canvas:canvas})
