@@ -1,6 +1,9 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/Addons.js'
 import debug_gui from './js_modules/lil-gui'
+import { avion_menu } from './objects/avion/avion-gui'
+import { debug_object_avion } from './objects/avion/avion-gui'
+import { helice_group } from './objects/avion/avion'
 
 //canvas doom element
 const canvas = document.querySelector('canvas.webgl')
@@ -25,7 +28,7 @@ controls.enableDamping = true
 controls.enabled = false
 
 //objects
-import avion from './objects/avion/avion'
+import {avion} from './objects/avion/avion'
 
 const axesHelper = new THREE.AxesHelper(2)
 
@@ -34,7 +37,11 @@ debug_gui.
     add(debug_object,'controls_value').onChange((value)=>{
         controls.enabled = value
     })
-    .name('Orbit Controls')
+    .name('Orbit Controls 🕹️')
+
+//avion menu
+avion_menu(avion)
+
 
 //scene
 const scene = new THREE.Scene()
@@ -60,8 +67,20 @@ window.addEventListener('resize', (event) => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
+//timer fps
+let time = Date.now()
+let deltaTime = 0
+
 //loop
 const loop = () => {
+    //deltatime
+    const currentTime = Date.now()
+    deltaTime = currentTime - time
+    time = currentTime
+
+    if(debug_object_avion.avion_helices_movimiento){
+        helice_group.rotation.x += 0.01 * deltaTime
+    }
     //update orbitcontrols
     controls.update()
 
@@ -70,6 +89,10 @@ const loop = () => {
 
     //recall loop
     requestAnimationFrame(loop)
+}
+
+export {
+    deltaTime
 }
 
 loop()

@@ -480,4 +480,8 @@ helice_group.add(helice_uno_grupo)
 helice_group.add(helice_dos_grupo)
 helice_group.add(helice_tres_grupo)
 
-export default avion
+export {
+    avion,
+    helice_group
+}
+
