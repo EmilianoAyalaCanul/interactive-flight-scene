@@ -11,14 +11,30 @@ const sizes = {
     height: window.innerHeight,
 }
 
+//debug objetc
+const debug_object = {}
+debug_object.controls_value = false
+
 //camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 200)
 camera.position.z = 5
+
+//orbit controls
+const controls = new OrbitControls(camera,canvas)
+controls.enableDamping = true
+controls.enabled = false
 
 //objects
 import avion from './objects/avion/avion'
 
 const axesHelper = new THREE.AxesHelper(2)
+
+//gui options
+debug_gui.
+    add(debug_object,'controls_value').onChange((value)=>{
+        controls.enabled = value
+    })
+    .name('Orbit Controls')
 
 //scene
 const scene = new THREE.Scene()
@@ -43,10 +59,6 @@ window.addEventListener('resize', (event) => {
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
-
-//orbit controls
-const controls = new OrbitControls(camera,canvas)
-controls.enableDamping = true
 
 //loop
 const loop = () => {
