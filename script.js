@@ -79,7 +79,7 @@ const loop = () => {
     time = currentTime
 
     if(debug_object_avion.avion_helices_movimiento){
-        helice_group.rotation.x += 0.01 * deltaTime
+        helice_group.rotation.x += 0.016 * deltaTime
     }
     //update orbitcontrols
     controls.update()
